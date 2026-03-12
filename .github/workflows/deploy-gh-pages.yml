@@ -39,28 +39,37 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
+          deploy_dir=".deploy-gh-pages"
+
+          rm -rf "$deploy_dir"
+
           if git ls-remote --exit-code --heads origin gh-pages >/dev/null 2>&1; then
             git fetch origin gh-pages
-            git switch --create gh-pages-deploy origin/gh-pages
+            git worktree add --force "$deploy_dir" origin/gh-pages
           else
-            git switch --orphan gh-pages-deploy
-            git rm -rf . >/dev/null 2>&1 || true
+            git worktree add --detach "$deploy_dir"
+            (
+              cd "$deploy_dir"
+              git checkout --orphan gh-pages
+              find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+            )
           fi
 
-          find . -mindepth 1 -maxdepth 1 \
-            ! -name .git \
-            ! -name public \
-            -exec rm -rf {} +
+          find "$deploy_dir" -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
 
-          cp -R public/. .
-          rm -rf public
+          cp -R public/. "$deploy_dir"/
 
-          git add --all
+          (
+            cd "$deploy_dir"
+            git add --all
 
-          if git diff --cached --quiet; then
-            echo "No changes to publish."
-            exit 0
-          fi
+            if git diff --cached --quiet; then
+              echo "No changes to publish."
+              exit 0
+            fi
 
-          git commit -m "Deploy from main"
-          git push origin HEAD:gh-pages --force
+            git commit -m "Deploy from main"
+            git push origin HEAD:gh-pages --force
+          )
+
+          git worktree remove "$deploy_dir" --force

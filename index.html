@@ -289,7 +289,7 @@
 
     <!-- Experience / Parallax Section -->
     <section id="experience" class="relative py-32 overflow-hidden">
-        <div class="absolute inset-0 bg-fixed bg-cover bg-center opacity-30 scale-110" style="background-image: url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=2070&auto=format&fit=crop');"></div>
+        <div class="absolute inset-0 bg-fixed bg-cover bg-center opacity-30 scale-110" style="background-image: url('../public/assets/images/landing.jpg');"></div>
         <div class="relative z-10 max-w-4xl mx-auto text-center px-6">
             <h2 class="font-display text-4xl md:text-7xl uppercase mb-8 reveal">Where Two Giants <span class="italic text-transparent" style="-webkit-text-stroke: 1px white;">Meet</span></h2>
             <p class="text-xl text-white/80 mb-12 reveal delay-100">
@@ -325,16 +325,16 @@
 
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
                 <div class="col-span-2 row-span-2 overflow-hidden rounded-3xl reveal">
-                    <img src="https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?q=80&w=2038&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer gallery-img" alt="Rafting 1">
+                    <img src="../public/assets/images/g1.JPG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer gallery-img" alt="Rafting 1">
                 </div>
                 <div class="overflow-hidden rounded-3xl reveal delay-100">
-                    <img src="https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer gallery-img" alt="Rafting 2">
+                    <img src="../public/assets/images/g2.JPG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer gallery-img" alt="Rafting 2">
                 </div>
                 <div class="overflow-hidden rounded-3xl reveal delay-200">
-                    <img src="https://images.unsplash.com/photo-1544621285-8f4306354898?q=80&w=2074&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer gallery-img" alt="Rafting 3">
+                    <img src="../public/assets/images/g3.JPG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer gallery-img" alt="Rafting 3">
                 </div>
                 <div class="col-span-2 overflow-hidden rounded-3xl reveal delay-300">
-                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer gallery-img" alt="Landscape">
+                    <img src="../public/assets/images/g4.JPG" class="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer gallery-img" alt="Landscape">
                 </div>
             </div>
         </div>
@@ -356,12 +356,15 @@
             </div>
             <div class="relative reveal delay-200">
                 <div class="aspect-video bg-river-deep rounded-[2rem] overflow-hidden group shadow-2xl">
-                    <img src="https://images.unsplash.com/photo-1469474099711-4235076ed3a0?q=80&w=2069&auto=format&fit=crop" class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all duration-700">
-                    <div class="absolute inset-0 flex items-center justify-center">
-                        <button class="w-20 h-20 bg-white rounded-full flex items-center justify-center pl-2 hover:scale-110 transition-transform shadow-xl">
-                            <i data-lucide="play" class="fill-river-deep text-river-deep"></i>
-                        </button>
-                    </div>
+                    <video
+                        class="w-full h-full object-cover opacity-60 group-hover:scale-105 transition-all duration-700"
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                    >
+                        <source src="assets/videos/hero_bg.MP4" type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
@@ -380,10 +383,10 @@
             <h2 class="font-display text-5xl md:text-7xl uppercase mb-8">Ready to <span class="text-glacier">Dive In?</span></h2>
             <p class="text-xl text-white/50 mb-12">Our boats are ready, the river is calling. Limited spots available for the summer season (June - September).</p>
             <div class="flex flex-col sm:flex-row gap-6 justify-center">
-                <a href="mailto:book@madwaves.com" class="px-12 py-6 bg-glacier text-river-deep font-extrabold rounded-2xl hover:bg-white transition-all hover:-translate-y-1 shadow-2xl">Book My Raft</a>
-                <a href="tel:+919876543210" class="px-12 py-6 glass rounded-2xl font-extrabold hover:bg-white/10 transition-all flex items-center justify-center gap-3">
+                <a href="https://wa.me/919797521776" class="px-12 py-6 bg-glacier text-river-deep font-extrabold rounded-2xl hover:bg-white transition-all hover:-translate-y-1 shadow-2xl">Book My Raft</a>
+                <a href="tel:+919797521776" class="px-12 py-6 glass rounded-2xl font-extrabold hover:bg-white/10 transition-all flex items-center justify-center gap-3">
                     <i data-lucide="phone" class="w-5 h-5"></i>
-                    +91 9876 5432 10
+                    +91 9797 5217 76
                 </a>
             </div>
         </div>
@@ -420,7 +423,7 @@
             </div>
         </div>
         <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
-            <p class="text-xs text-white/20 uppercase tracking-widest">&copy; 2024 Mad Waves Rafting Company. All Rights Reserved.</p>
+            <p class="text-xs text-white/20 uppercase tracking-widest">&copy; 2026 Mad Waves Rafting Company. All Rights Reserved.</p>
             <div class="flex gap-8 text-[10px] text-white/20 uppercase tracking-[0.2em]">
                 <a href="#" class="hover:text-white">Privacy Policy</a>
                 <a href="#" class="hover:text-white">Terms of Adventure</a>
@@ -433,105 +436,6 @@
         <img id="lightboxImg" src="" class="max-w-full max-h-full rounded-xl shadow-2xl">
     </div>
 
-    <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
-
-        // Loading Screen
-        window.addEventListener('load', () => {
-            const loader = document.getElementById('loader');
-            loader.style.opacity = '0';
-            setTimeout(() => loader.style.display = 'none', 700);
-        });
-
-        // Sticky Navbar Scroll Effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('nav-scrolled');
-            } else {
-                navbar.classList.remove('nav-scrolled');
-            }
-        });
-
-        // Parallax Effect for Hero
-        const heroBg = document.getElementById('heroBg');
-        window.addEventListener('scroll', () => {
-            const scrolled = window.scrollY;
-            if (heroBg) {
-                heroBg.style.transform = `translateY(${scrolled * 0.4}px)`;
-            }
-        });
-
-        // Reveal Animations using Intersection Observer
-        const observerOptions = {
-            threshold: 0.1
-        };
-
-        const revealObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-        // Mobile Menu Logic
-        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-        const closeMenuBtn = document.getElementById('closeMenuBtn');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileLinks = document.querySelectorAll('.mobile-link');
-
-        function toggleMenu() {
-            mobileMenu.classList.toggle('translate-x-full');
-        }
-
-        mobileMenuBtn.onclick = toggleMenu;
-        closeMenuBtn.onclick = toggleMenu;
-        mobileLinks.forEach(link => link.onclick = toggleMenu);
-
-        // Simple Gallery Lightbox
-        const lightbox = document.getElementById('lightbox');
-        const lightboxImg = document.getElementById('lightboxImg');
-        const galleryImages = document.querySelectorAll('.gallery-img');
-
-        galleryImages.forEach(img => {
-            img.onclick = () => {
-                lightboxImg.src = img.src;
-                lightbox.classList.remove('hidden');
-                lightbox.classList.add('flex');
-            };
-        });
-
-        lightbox.onclick = () => {
-            lightbox.classList.add('hidden');
-            lightbox.classList.remove('flex');
-        };
-
-        // Smooth Scrolling for all internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                
-                // If the link is just "#", we scroll to the top
-                if (targetId === '#') {
-                    e.preventDefault();
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                    return;
-                }
-
-                // If the link points to a valid ID on the page
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    e.preventDefault();
-                    targetElement.scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
+    <script src="../public/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | Mad Waves Rafting Ladakh</title>
+
+    <link href="css/style.css" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'river-deep': '#061a33',
+                        'river': '#0b2447',
+                        'glacier': '#00d1ff',
+                        'glacier-light': '#a5f3fc',
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        display: ['Syne', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(to bottom, rgba(6, 26, 51, 0.4), rgba(6, 26, 51, 1));
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .nav-scrolled {
+            background: rgba(6, 26, 51, 0.95);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
+        }
+        .page-offset {
+            padding-top: 5.5rem;
+        }
+
+        .gallery-hero {
+            min-height: calc(100svh - 5.5rem);
+        }
+
+        @media (min-width: 1024px) {
+            .page-offset {
+                padding-top: 6.5rem;
+            }
+
+            .gallery-hero {
+                min-height: calc(100svh - 6.5rem);
+            }
+        }
+
+        /* Gallery Transitions */
+        .gallery-item {
+            transition: all 0.5s ease;
+        }
+        .gallery-item.hidden-filtered {
+            opacity: 0;
+            transform: scale(0.9);
+            display: none;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #061a33; }
+        ::-webkit-scrollbar-thumb { background: #144272; border-radius: 10px; }
+
+        .filter-btn.active {
+            background-color: #00d1ff;
+            color: #061a33;
+            border-color: #00d1ff;
+        }
+
+        .filter-row {
+            scrollbar-width: none;
+        }
+
+        .filter-row::-webkit-scrollbar {
+            display: none;
+        }
+
+        @media (max-width: 640px) {
+            .gallery-hero {
+                min-height: auto;
+                padding-top: 2.5rem;
+                padding-bottom: 1.75rem;
+            }
+
+            .filter-section {
+                padding-left: 0;
+                padding-right: 0;
+                padding-bottom: 2rem;
+            }
+
+            .filter-row {
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                gap: 0.75rem;
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .filter-btn {
+                flex: 0 0 auto;
+                padding: 0.85rem 1.25rem;
+                font-size: 0.7rem;
+                letter-spacing: 0.18em;
+                white-space: nowrap;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen bg-river-deep text-white font-sans overflow-x-hidden flex flex-col">
+
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12 nav-scrolled">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="index.html" class="group flex items-center gap-3">
+                <div class="w-10 h-10 bg-glacier rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <i data-lucide="waves" class="text-river-deep"></i>
+                </div>
+                <span class="font-display text-2xl tracking-tighter uppercase">Mad Waves</span>
+            </a>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-widest">
+                <a href="index.html" class="hover:text-glacier transition-colors relative group">Home</a>
+                <a href="#" class="text-glacier relative group">Gallery
+                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-glacier"></span>
+                </a>
+                <a href="#contact" class="px-6 py-2 border border-glacier/30 rounded-full hover:bg-glacier hover:text-river-deep transition-all">Book Now</a>
+            </div>
+
+            <button class="md:hidden text-white" id="mobileMenuBtn">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex-1">
+    <!-- Header Section -->
+    <header class="gallery-hero relative flex items-center px-6 overflow-hidden py-16">
+        <div class="absolute inset-0 z-0">
+            <img src="./assets/images/IMG_3374.JPG" 
+                 class="w-full h-full object-cover opacity-20 scale-105 blur-sm">
+            <div class="absolute inset-0 hero-gradient"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10 text-center flex flex-col items-center justify-center min-h-full">
+            <h1 class="font-display text-5xl md:text-8xl uppercase tracking-tighter mb-6 reveal active">
+                The Frozen <span class="text-transparent italic" style="-webkit-text-stroke: 1px white;">Moments</span>
+            </h1>
+            <p class="text-white/50 max-w-2xl mx-auto text-lg reveal active delay-100">
+                A visual journey through the rapids, the silence of the canyons, and the wild spirit of the Himalayas. Captured by our team and travelers.
+            </p>
+        </div>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="filter-section pb-12 px-6">
+        <div class="filter-row max-w-7xl mx-auto flex flex-wrap justify-center gap-4 reveal active delay-200">
+            <button class="filter-btn active px-8 py-3 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest transition-all hover:border-glacier" data-filter="all">All Shots</button>
+            <button class="filter-btn px-8 py-3 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest transition-all hover:border-glacier" data-filter="action">Action</button>
+            <button class="filter-btn px-8 py-3 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest transition-all hover:border-glacier" data-filter="landscape">Landscapes</button>
+            <button class="filter-btn px-8 py-3 rounded-full border border-white/10 text-xs font-bold uppercase tracking-widest transition-all hover:border-glacier" data-filter="camp">Camp Life</button>
+        </div>
+    </section>
+
+    <!-- Gallery Grid -->
+    <section class="pb-32 px-6 lg:px-12">
+        <div id="galleryGrid" class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Action Item -->
+            <div class="gallery-item reveal active group cursor-pointer overflow-hidden rounded-[2rem] glass aspect-[4/5]" data-category="action">
+                <img src="./assets/images/IMG_3431.JPG" 
+                     alt="White water rafting action" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-river-deep/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                    <span class="text-glacier text-xs font-bold uppercase tracking-widest mb-2">Rapid Chasing</span>
+                    <h3 class="font-display text-xl uppercase">The Wall Rapid</h3>
+                </div>
+            </div>
+
+            <!-- Landscape Item -->
+            <div class="gallery-item reveal active group cursor-pointer overflow-hidden rounded-[2rem] glass aspect-square" data-category="landscape">
+                <img src="./assets/images/IMG_3383.JPG" 
+                     alt="Zanskar Canyon" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-river-deep/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                    <span class="text-glacier text-xs font-bold uppercase tracking-widest mb-2">Grandeur</span>
+                    <h3 class="font-display text-xl uppercase">Canyon Shadows</h3>
+                </div>
+            </div>
+
+            <!-- Action Item -->
+            <div class="gallery-item reveal active group cursor-pointer overflow-hidden rounded-[2rem] glass aspect-[4/5] lg:row-span-2" data-category="action">
+                <img src="./assets/images/IMG_8046.JPG" 
+                     alt="Big splash" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-river-deep/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                    <span class="text-glacier text-xs font-bold uppercase tracking-widest mb-2">Pure Adrenaline</span>
+                    <h3 class="font-display text-xl uppercase">Glacial Bath</h3>
+                </div>
+            </div>
+
+            <!-- Camp Item -->
+            <div class="gallery-item reveal active group cursor-pointer overflow-hidden rounded-[2rem] glass aspect-video md:col-span-2" data-category="camp">
+                <img src="./assets/images/IMG_8046.JPG" 
+                     alt="Riverside camp" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-river-deep/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                    <span class="text-glacier text-xs font-bold uppercase tracking-widest mb-2">Basecamp</span>
+                    <h3 class="font-display text-xl uppercase">Nights under the Milky Way</h3>
+                </div>
+            </div>
+
+            <!-- Landscape Item -->
+            <div class="gallery-item reveal active group cursor-pointer overflow-hidden rounded-[2rem] glass aspect-square" data-category="landscape">
+                <img src="./assets/images/IMG_9666.JPG" 
+                     alt="Sangam Confluence" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-river-deep/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                    <span class="text-glacier text-xs font-bold uppercase tracking-widest mb-2">Nature's Art</span>
+                    <h3 class="font-display text-xl uppercase">The Confluence</h3>
+                </div>
+            </div>
+
+            <!-- Camp Item -->
+            <div class="gallery-item reveal active group cursor-pointer overflow-hidden rounded-[2rem] glass aspect-square" data-category="camp">
+                <img src="./assets/images/IMG_8971.JPG" 
+                     alt="Rafting gear" 
+                     class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-gradient-to-t from-river-deep/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity p-8 flex flex-col justify-end">
+                    <span class="text-glacier text-xs font-bold uppercase tracking-widest mb-2">Essentials</span>
+                    <h3 class="font-display text-xl uppercase">Ready for Battle</h3>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Lightbox Container -->
+    <div id="lightbox" class="fixed inset-0 z-[100] bg-river-deep/98 hidden items-center justify-center p-4 md:p-12 transition-all duration-500 opacity-0">
+        <button id="closeLightbox" class="absolute top-8 right-8 text-white hover:text-glacier z-[110]">
+            <i data-lucide="x" class="w-10 h-10"></i>
+        </button>
+        <div class="relative max-w-5xl w-full h-full flex items-center justify-center">
+            <img id="lightboxImg" src="" class="max-w-full max-h-full object-contain rounded-xl shadow-2xl">
+        </div>
+    </div>
+
+    <!-- CTA Section -->
+    <section id="contact" class="py-24 px-6 bg-river relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center reveal active">
+            <h2 class="font-display text-4xl md:text-6xl uppercase mb-8">Ready to be the <span class="text-glacier">Subject?</span></h2>
+            <p class="text-white/50 mb-10 text-lg">Book your expedition today and let our GoPro team capture your Himalayan story.</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/919797521776" class="px-10 py-5 bg-glacier text-river-deep font-bold rounded-2xl hover:bg-white transition-all">Start Your Journey</a>
+                <a href="tel:+919797521776" class="px-10 py-5 glass rounded-2xl font-bold flex items-center justify-center gap-2">
+                    <i data-lucide="phone" class="w-5 h-5"></i> +91 9797 5217 76
+                </a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer (Same as Home) -->
+    <footer class="mt-auto bg-river-deep pt-24 pb-12 px-6 border-t border-white/5">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 items-start mb-20">
+            <div class="col-span-2">
+                <div class="flex items-center gap-3 mb-8">
+                    <div class="w-10 h-10 bg-glacier rounded-lg flex items-center justify-center">
+                        <i data-lucide="waves" class="text-river-deep"></i>
+                    </div>
+                    <span class="font-display text-2xl tracking-tighter uppercase">Mad Waves</span>
+                </div>
+                <p class="text-white/40 max-w-sm">The #1 rated rafting expedition team in Ladakh. Professional, passionate, and slightly obsessed with river currents.</p>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-sm">Links</h4>
+                <ul class="space-y-4 text-white/50 text-sm">
+                    <li><a href="index.html" class="hover:text-glacier transition-colors">Home</a></li>
+                    <li><a href="#" class="hover:text-glacier transition-colors">Safety</a></li>
+                    <li><a href="#" class="hover:text-glacier transition-colors">Trips</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold uppercase tracking-widest mb-6 text-sm">Follow</h4>
+                <div class="flex gap-4">
+                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-glacier hover:text-river-deep transition-all"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-glacier hover:text-river-deep transition-all"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                </div>
+            </div>
+        </div>
+        <p class="text-center text-[10px] text-white/20 uppercase tracking-widest">&copy; 2026 Mad Waves Rafting. Leh, Ladakh.</p>
+    </footer>
+
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Reveal Animations on Scroll
+        const observerOptions = { threshold: 0.1 };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Filtering Logic
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Update buttons
+                filterBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+
+                const filter = btn.getAttribute('data-filter');
+
+                galleryItems.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || category === filter) {
+                        item.classList.remove('hidden-filtered');
+                        // Small timeout for nice reveal effect
+                        setTimeout(() => {
+                            item.style.display = 'block';
+                            item.style.opacity = '1';
+                            item.style.transform = 'scale(1)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'scale(0.9)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                            item.classList.add('hidden-filtered');
+                        }, 400);
+                    }
+                });
+            });
+        });
+
+        // Lightbox Logic
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeLightbox = document.getElementById('closeLightbox');
+
+        galleryItems.forEach(item => {
+            item.addEventListener('click', () => {
+                const imgSrc = item.querySelector('img').src;
+                lightboxImg.src = imgSrc;
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+                setTimeout(() => {
+                    lightbox.classList.add('opacity-100');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        const hideLightbox = () => {
+            lightbox.classList.remove('opacity-100');
+            setTimeout(() => {
+                lightbox.classList.remove('flex');
+                lightbox.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 500);
+        };
+
+        closeLightbox.addEventListener('click', hideLightbox);
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.id === 'lightboxImg') {
+                hideLightbox();
+            }
+        });
+
+        // ESC Key to close lightbox
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') hideLightbox();
+        });
+    </script>
+</body>
+</html>

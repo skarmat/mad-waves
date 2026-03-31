@@ -145,21 +145,24 @@
 <body class="min-h-screen bg-river-deep text-white font-sans overflow-x-hidden flex flex-col">
 
     <!-- Navbar -->
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12 nav-scrolled">
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500 py-6 px-6 lg:px-12">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <a href="index.html" class="group flex items-center gap-3">
-                <div class="w-10 h-10 bg-glacier rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform">
-                    <i data-lucide="waves" class="text-river-deep"></i>
+            <a href="index.html#home" class="group flex items-center gap-3">
+                <div class="w-12 h-10 rounded-lg flex items-center justify-center group-hover:rotate-12 transition-transform">
+                    <img src="assets/logo/logo-trans_1.png" alt="Mad Waves Logo">
                 </div>
                 <span class="font-display text-2xl tracking-tighter uppercase">Mad Waves</span>
             </a>
 
             <div class="hidden md:flex items-center gap-8 text-sm font-semibold uppercase tracking-widest">
-                <a href="index.html" class="hover:text-glacier transition-colors relative group">Home</a>
-                <a href="#" class="text-glacier relative group">Gallery
-                    <span class="absolute -bottom-1 left-0 w-full h-0.5 bg-glacier"></span>
+                <a href="index.html#home" class="hover:text-glacier transition-colors relative group">
+                    Home
+                    <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-glacier transition-all group-hover:w-full"></span>
                 </a>
-                <a href="#contact" class="px-6 py-2 border border-glacier/30 rounded-full hover:bg-glacier hover:text-river-deep transition-all">Book Now</a>
+                <a href="index.html#trips" class="hover:text-glacier transition-colors relative group">Trips</a>
+                <a href="index.html#experience" class="hover:text-glacier transition-colors relative group">Experience</a>
+                <a href="index.html#about" class="hover:text-glacier transition-colors relative group">About</a>
+                <a href="index.html#contact" class="px-6 py-2 border border-glacier/30 rounded-full hover:bg-glacier hover:text-river-deep transition-all">Book Now</a>
             </div>
 
             <button class="md:hidden text-white" id="mobileMenuBtn">
@@ -167,6 +170,15 @@
             </button>
         </div>
     </nav>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="fixed inset-0 bg-river-deep z-[60] flex flex-col items-center justify-center gap-8 text-2xl font-display uppercase tracking-widest translate-x-full transition-transform duration-500">
+        <button class="absolute top-8 right-8" id="closeMenuBtn"><i data-lucide="x"></i></button>
+        <a href="index.html#home" class="mobile-link">Home</a>
+        <a href="index.html#trips" class="mobile-link">Trips</a>
+        <a href="index.html#experience" class="mobile-link">Experience</a>
+        <a href="index.html#contact" class="mobile-link">Contact</a>
+    </div>
 
     <main class="flex-1">
     <!-- Header Section -->
@@ -295,42 +307,85 @@
     </section>
     </main>
 
-    <!-- Footer (Same as Home) -->
+    <!-- Footer -->
     <footer class="mt-auto bg-river-deep pt-24 pb-12 px-6 border-t border-white/5">
-        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 items-start mb-20">
+        <div class="max-w-7xl mx-auto grid md:grid-cols-4 gap-12 mb-20">
             <div class="col-span-2">
                 <div class="flex items-center gap-3 mb-8">
-                    <div class="w-10 h-10 bg-glacier rounded-lg flex items-center justify-center">
-                        <i data-lucide="waves" class="text-river-deep"></i>
+                    <div class="w-12 h-10 rounded-lg flex items-center justify-center">
+                        <img src="assets/logo/logo.png" alt="Mad Waves logo">
                     </div>
                     <span class="font-display text-2xl tracking-tighter uppercase">Mad Waves</span>
                 </div>
                 <p class="text-white/40 max-w-sm">The #1 rated rafting expedition team in Ladakh. Professional, passionate, and slightly obsessed with river currents.</p>
             </div>
             <div>
-                <h4 class="font-bold uppercase tracking-widest mb-6 text-sm">Links</h4>
+                <h4 class="font-bold uppercase tracking-widest mb-6">Explore</h4>
                 <ul class="space-y-4 text-white/50 text-sm">
-                    <li><a href="index.html" class="hover:text-glacier transition-colors">Home</a></li>
-                    <li><a href="#" class="hover:text-glacier transition-colors">Safety</a></li>
-                    <li><a href="#" class="hover:text-glacier transition-colors">Trips</a></li>
+                    <li><a href="index.html#home" class="hover:text-glacier transition-colors">Home</a></li>
+                    <li><a href="#" class="hover:text-glacier transition-colors">Safety Protocols</a></li>
+                    <li><a href="#" class="hover:text-glacier transition-colors">Expedition Blog</a></li>
+                    <li><a href="#" class="hover:text-glacier transition-colors">Careers</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="font-bold uppercase tracking-widest mb-6 text-sm">Follow</h4>
+                <h4 class="font-bold uppercase tracking-widest mb-6">Location</h4>
+                <p class="text-white/50 text-sm mb-6">Main Bazaar Road, Leh,<br> Ladakh, 194101<br> India</p>
                 <div class="flex gap-4">
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-glacier hover:text-river-deep transition-all"><i data-lucide="instagram" class="w-4 h-4"></i></a>
-                    <a href="#" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-glacier hover:text-river-deep transition-all"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+                    <a href="#" aria-label="Instagram" title="Instagram" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-glacier hover:text-river-deep transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                            <path d="M16 11.37a4 4 0 1 1-4.63-4.63 4 4 0 0 1 4.63 4.63z"></path>
+                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="Facebook" title="Facebook" class="w-10 h-10 glass rounded-full flex items-center justify-center hover:bg-glacier hover:text-river-deep transition-all">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4">
+                            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                        </svg>
+                    </a>
                 </div>
             </div>
         </div>
-        <p class="text-center text-[10px] text-white/20 uppercase tracking-widest">&copy; 2026 Mad Waves Rafting. Leh, Ladakh.</p>
+        <div class="max-w-7xl mx-auto pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-xs text-white/20 uppercase tracking-widest">&copy; 2026 Mad Waves Rafting Company. All Rights Reserved.</p>
+            <div class="flex gap-8 text-[10px] text-white/20 uppercase tracking-[0.2em]">
+                <a href="#" class="hover:text-white">Privacy Policy</a>
+                <a href="#" class="hover:text-white">Terms of Adventure</a>
+            </div>
+        </div>
     </footer>
 
     <script>
-        // Initialize Lucide Icons
-        lucide.createIcons();
+        if (window.lucide) {
+            lucide.createIcons();
+        }
 
-        // Reveal Animations on Scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (!navbar) return;
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-scrolled');
+            } else {
+                navbar.classList.remove('nav-scrolled');
+            }
+        });
+
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const closeMenuBtn = document.getElementById('closeMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        function toggleMenu() {
+            if (mobileMenu) {
+                mobileMenu.classList.toggle('translate-x-full');
+            }
+        }
+
+        if (mobileMenuBtn) mobileMenuBtn.onclick = toggleMenu;
+        if (closeMenuBtn) closeMenuBtn.onclick = toggleMenu;
+        mobileLinks.forEach(link => link.onclick = toggleMenu);
+
         const observerOptions = { threshold: 0.1 };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
@@ -342,13 +397,11 @@
 
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-        // Filtering Logic
         const filterBtns = document.querySelectorAll('.filter-btn');
         const galleryItems = document.querySelectorAll('.gallery-item');
 
         filterBtns.forEach(btn => {
             btn.addEventListener('click', () => {
-                // Update buttons
                 filterBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
 
@@ -358,7 +411,6 @@
                     const category = item.getAttribute('data-category');
                     if (filter === 'all' || category === filter) {
                         item.classList.remove('hidden-filtered');
-                        // Small timeout for nice reveal effect
                         setTimeout(() => {
                             item.style.display = 'block';
                             item.style.opacity = '1';
@@ -376,15 +428,16 @@
             });
         });
 
-        // Lightbox Logic
         const lightbox = document.getElementById('lightbox');
         const lightboxImg = document.getElementById('lightboxImg');
         const closeLightbox = document.getElementById('closeLightbox');
 
         galleryItems.forEach(item => {
             item.addEventListener('click', () => {
-                const imgSrc = item.querySelector('img').src;
-                lightboxImg.src = imgSrc;
+                const img = item.querySelector('img');
+                if (!img || !lightboxImg || !lightbox) return;
+
+                lightboxImg.src = img.src;
                 lightbox.classList.remove('hidden');
                 lightbox.classList.add('flex');
                 setTimeout(() => {
@@ -395,6 +448,7 @@
         });
 
         const hideLightbox = () => {
+            if (!lightbox) return;
             lightbox.classList.remove('opacity-100');
             setTimeout(() => {
                 lightbox.classList.remove('flex');
@@ -403,14 +457,18 @@
             }, 500);
         };
 
-        closeLightbox.addEventListener('click', hideLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox || e.target.id === 'lightboxImg') {
-                hideLightbox();
-            }
-        });
+        if (closeLightbox) {
+            closeLightbox.addEventListener('click', hideLightbox);
+        }
 
-        // ESC Key to close lightbox
+        if (lightbox) {
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox || e.target.id === 'lightboxImg') {
+                    hideLightbox();
+                }
+            });
+        }
+
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') hideLightbox();
         });

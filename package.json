@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "copy:html": "node -e \"require('fs').copyFileSync('src/index.html', 'public/index.html')\"",
+    "copy:html": "node -e \"const fs=require('fs'); fs.copyFileSync('src/index.html', 'public/index.html'); fs.copyFileSync('src/main.js', 'public/main.js');\"",
     "build": "npm run copy:html && tailwindcss -i ./src/input.css -o ./public/css/style.css --minify",
     "watch": "npm run copy:html && tailwindcss -i ./src/input.css -o ./public/css/style.css --watch",
     "predeploy": "npm run build",
